@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
    <head>
         <title>A Web Page</title>
@@ -96,7 +96,7 @@
                       this.info.close();
                     });
                     // добавление ссылок в блок последних добавленных точек
-                    var html = "<a href=\"" + "info.html?id=" + id + "\">" + name + "</a>";
+                    var html = "<a href=\"" + "info.html?id=" + id + "\"> " + name + " </a>";
                     var block = document.getElementById('last_added_points');
                     block.innerHTML = html + block.innerHTML;
                     // смена активного маркера
@@ -162,7 +162,7 @@
                           this.info.close();
                         });
                         // добавление ссылок в блок последних добавленных точек
-                        var html = "<a href=\"" + "info.html?id=" + id + "\">" + name + "</a>";
+                        var html = "<a href=\"" + "info.html?id=" + id + "\"> " + name + " </a>";
                         var block = document.getElementById('last_added_points');
                         block.innerHTML = html + block.innerHTML;
                       }

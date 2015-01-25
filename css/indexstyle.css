@@ -5,11 +5,13 @@
 }
 #last_added_points {
     text-align: center;
-    margin-bottom: 1%;
+    margin-bottom: 1%;    
 }
 a {    
-    padding-left: 2%;
-    padding-right: 2%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     text-decoration: none;
 }
 p {

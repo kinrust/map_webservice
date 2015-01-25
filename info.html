@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+   <head>
+        <title>The Info Page</title>
+       
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+        <meta http-equiv="content-type" content="text/html" charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="css/infostyle.css">
+
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=ru"></script>
+        <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.8.1.custom.min.js"></script>
+
+        <script type="text/javascript">
+
+              var map;
+
+              function downloadUrl(url, callback) {
+                  var request = window.ActiveXObject ?
+                  new ActiveXObject('Microsoft.XMLHTTP') :
+                  new XMLHttpRequest;
+                  request.onreadystatechange = function() {
+                    if (request.readyState == 4) {
+                      request.onreadystatechange = doNothing;
+                      callback(request, request.status);
+                    }
+                  };
+                  request.open('GET', url, false);
+                  request.send(null);
+              }
+              function doNothing() {}
+
+              $(document).ready(function() {
+                  var marker;
+                  var id;
+                  var name;
+                  var address;
+                  var point;
+                  //Определение карты
+                  map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 14,
+                    center: new google.maps.LatLng(56.329917, 44.009191999999985),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                  });
+                  // разбор строки с параметром
+                  var parametr=location.search.substring(1).split("=");
+                  id = unescape(parametr[1]);
+
+                  // загрузка переданного маркера
+                  downloadUrl("php/generate_xml.php", function(data) {
+                      var xml = data.responseXML;
+                      var markers = xml.documentElement.getElementsByTagName("marker");
+                      for (var i = 0; i < markers.length; i++) {
+                          var currentid = unescape(markers[i].getAttribute("id"));
+                          if (currentid == id){
+                              name = unescape(markers[i].getAttribute("name"));
+                              address = unescape(markers[i].getAttribute("address"));
+                              point = new google.maps.LatLng(
+                                  parseFloat(markers[i].getAttribute("lat")),
+                                  parseFloat(markers[i].getAttribute("lng"))
+                              );
+                              map.setCenter(point);
+                              // Определение маркера
+                              marker = new google.maps.Marker({
+                                map: map,
+                                position: point
+                              });
+                              
+                              document.getElementById('name').textContent = name;
+                              document.getElementById('address').textContent = address;
+                              
+                              
+                              break;
+                           }
+                       }
+                   });
+              });
+
+        </script>
+    </head>
+    <body>
+        <div id="main">
+            <div><p><a href="index.html" id="to_back">Назад</a></p></div>
+            
+            <div id="map"></div>
+            
+            <div id="information">
+                <div id="caption">
+                    <div id="captionlabel">Название:</div>
+                    <div id="name"></div>                                  
+                </div>
+                <div id="location">                    
+                    <div id="locationlabel">Адрес:</div>     
+                    <div id="address"></div>                    
+                </div>
+            </div>
+            
+        </div>
+    </body>
+</html>

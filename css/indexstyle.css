@@ -1,0 +1,99 @@
+#main {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+#last_added_points {
+    text-align: center;
+    margin-bottom: 1%;
+}
+a {    
+    padding-left: 2%;
+    padding-right: 2%;
+    text-decoration: none;
+}
+p {
+    text-align: center;
+    font-weight: bold;
+}
+.ui-autocomplete {
+  width: 50%;
+  background-color: white;  
+  border: 1px solid #cfcfcf;
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+
+@media only screen and (min-width: 250px) {
+
+#name, #address {
+    width: 98%;
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+#add_point, #delete_points {
+    width: 80%;
+    font-weight: bold;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+#map_area {
+  height: 300px;
+} 
+.ui-autocomplete {
+  width: 90%;
+}
+}
+
+
+@media only screen and (min-width: 530px) {
+
+#name, #address {
+    width: 80%;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+#add_point, #delete_points {
+    width: 70%;
+    font-weight: bold;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+#map_area {
+  height: 350px;
+} 
+.ui-autocomplete {
+  width: 80%;
+}
+}
+
+@media only screen and (min-width: 992px) {
+
+#name, #address {
+    width: 40%;
+    text-align: center;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+}
+
+#add_point, #delete_points {
+    width: 20%;
+    font-weight: bold;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+}
+
+#map_area {
+  height: 540px;
+}
+.ui-autocomplete {
+  width: 35%;
+}
+}
